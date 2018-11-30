@@ -10,12 +10,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <!-- css文件 -->
   {include file="public/title" /}
 </head>
 
 <body data-type="index">
+  <!-- 头部 -->
   {include file="public/header" /}
-  {include file="public/leftNav" /}
+  <div class="tpl-page-container tpl-page-header-fixed">
+    <!-- 左侧导航 -->
+    {include file="public/leftNav" /}
     <div class="tpl-content-wrapper">
       <div class="tpl-content-page-title">
         Amaze UI 首页组件
@@ -719,6 +723,7 @@
       </div>
     </div>
   </div>
+  <!-- js -->
   {include file="public/foot" /}
 </body>
 
