@@ -24,6 +24,10 @@ class Admin extends Controller
     }
     public function lst()
     {
+      $admin = new AdminModel();
+      $res = $admin->getadmin();
+      //分配数据到页面
+      $this->assign('res',$res);
       return $this->fetch();
     }
 }
