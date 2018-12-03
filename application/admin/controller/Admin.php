@@ -32,24 +32,24 @@ class Admin extends Controller
       return $this->fetch();
     }
     //单条删除
-    // public function ajax_del(){
-    //   //接收数据 /d强制转换整型防止sql注入
-    //   $id = input("post.id/d");
-    //   //执行删除
-    //   $code = Db::execute("delete from qy_admin where id = $id");
-    //   //判断是否成功
-    //   if($code){
-    //     $data=[
-    //       "statu"=>200,
-    //       "info"=>"删除成功"
-    //     ];
-    //   }else{
-    //     $data=[
-    //       "statu"=>400,
-    //       "info"=>"删除失败"
-    //     ];
-    //   }
-    //   //返回数组
-    //   return $data;
-    // }
+    public function ajax_del(){
+      //接收数据 /d强制转换整型防止sql注入
+      $id = input("post.id/d");
+      //执行删除
+      $code = Db::execute("delete from qy_admin where id = $id");
+      //判断是否成功
+      if($code){
+        $data=[
+          "statu"=>200,
+          "info"=>"删除成功"
+        ];
+      }else{
+        $data=[
+          "statu"=>400,
+          "info"=>"删除失败"
+        ];
+      }
+      //返回数组
+      return $data;
+    }
 }

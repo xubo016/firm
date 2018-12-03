@@ -90,17 +90,16 @@
               </table>
               <script>
                 function del(obj,id){
-                //   $.post("{:url('Admin/ajax_del')}",{id:id},function(data){
-                //     if(data.statu==200){
-                //       layer.alert(data.info, {icon: 6});
-                //       $(obj).parent().parent().parent().parent().remove();
-                //     }else{
-                //       layer.alert(data.info, {icon: 5});
-                //     }
-                //   })
-                // }
+                  $.post("{:url('admin/ajax_del')}",{id:id},function(data){
+                    if(data.statu==200){
+                      layer.alert(data.info, {icon: 6});
+                      $(obj).parent().parent().parent().parent().remove();
+                    }else{
+                      layer.alert(data.info, {icon: 5});
+                    }
+                  })
+                }
               </script>
-              
               <div class="am-cf">
                 <div class="am-fr">
                   <ul class="am-pagination tpl-pagination">
