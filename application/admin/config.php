@@ -17,5 +17,11 @@ return [
     'view_replace_str'  =>  [
       '__ADMIN__'   =>  '/static/admin',
     ],
+    //分页配置
+    'paginate'               => [
+      'type'      => 'Paging',
+      'var_page'  => 'page',
+      'list_rows' => 12,
+    ],
 
 ];

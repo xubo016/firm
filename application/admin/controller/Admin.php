@@ -52,4 +52,8 @@ class Admin extends Controller
       //返回数组
       return $data;
     }
+    // 空操作
+    public function _empty(){
+      $this->redirect('index/index');
+    }
 }

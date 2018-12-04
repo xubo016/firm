@@ -24,7 +24,7 @@ class Admin extends Model
   }
   //查询数据
   public function getadmin(){
-    return $this::select();
+    return $this::paginate(10);
   }
 
 }
