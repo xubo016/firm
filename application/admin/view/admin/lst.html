@@ -75,12 +75,13 @@
                     <td><a href="#">{$value.user}</a></td>
                     <td>
                       <div class="am-btn-toolbar">
+
                         <div class="am-btn-group am-btn-group-xs">
-                          <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span>
-                            编辑</button>
-                          <button onclick="del(this,{$value.id})" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span
+                            <a href="{:url('edit',['id'=>$value.id])}"><button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span>
+                            编辑</button></a>
+                            <a href="javascript:;"><button onclick="del(this,{$value.id})" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span
                               class="am-icon-trash-o"></span>
-                            删除</button>
+                            删除</button></a>
                         </div>
                       </div>
                     </td>
@@ -89,11 +90,15 @@
                 </tbody>
               </table>
               <script>
+
+                /**
+                  * ajax单条删除
+                  */
                 function del(obj,id){
                   $.post("{:url('admin/ajax_del')}",{id:id},function(data){
                     if(data.statu==200){
                       layer.alert(data.info, {icon: 6});
-                      $(obj).parent().parent().parent().parent().remove();
+                      $(obj).parent().parent().parent().parent().parent().remove();
                     }else{
                       layer.alert(data.info, {icon: 5});
                     }
@@ -103,16 +108,8 @@
               
               <div class="am-cf">
                 <div class="am-fr">
+                  <!-- 分页 -->
                   {$res->render()}
-                  <!-- <ul class="am-pagination tpl-pagination">
-                    <li class="am-disabled"><a href="#">«</a></li>
-                    <li class="am-active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">»</a></li>
-                  </ul> -->
                 </div>
               </div>
 
