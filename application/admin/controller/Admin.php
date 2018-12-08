@@ -1,9 +1,9 @@
 <?php
 namespace app\admin\controller;
-use think\Controller;
+use app\admin\controller\Common;
 use think\Db;
 use app\admin\model\Admin as AdminModel;
-class Admin extends Controller
+class Admin extends Common
 {
 
   /**
@@ -96,6 +96,14 @@ class Admin extends Controller
     }
     $this->assign('admin',$code);
     return view();
+  }
+
+  /**
+   * 清空sessio退出登录
+   */
+  public function logout(){
+    session(null);
+    $this->success('退出系统成功','login/index');
   }
 
   /**

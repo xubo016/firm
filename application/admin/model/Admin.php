@@ -37,9 +37,11 @@ class Admin extends Model
    * 登录
    */
   public function login($data){
-    $admin = Admin::get($data['user']);
+    $admin = Admin::get(['user'=>$data['user']]);
     if($admin){
-      if($admin['password']=md5($admin['passwod'])){
+      if($admin['password']==md5($data['password'])){
+        session('id',$admin['id']);
+        session('user',$admin['user']);
         return 2; //登录密码正确 
       }else{
         return 3; //登录密码错误
@@ -47,8 +49,6 @@ class Admin extends Model
     }else{
       return 1; //用户不存在
     }
-
   }
-
 }
 ?>
