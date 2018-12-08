@@ -4,7 +4,7 @@ use think\Model;
 class Admin extends Model
 {
   
-  /**
+  /** 
    * 添加数据
    */
   public function addadmin($data){
