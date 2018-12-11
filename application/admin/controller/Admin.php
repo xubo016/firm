@@ -6,7 +6,7 @@ use app\admin\model\Admin as AdminModel;
 class Admin extends Common
 {
 
-  /**
+  /** 
    * 管理员添加
    */
   public function add()
