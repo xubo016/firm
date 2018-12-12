@@ -63,34 +63,35 @@
                   <tr>
                     <th class="table-check" width="10%"><input type="checkbox" class="tpl-table-fz-check"></th>
                     <th class="table-id" width="10%">ID</th>
-                    <th class="table-title" width="20%">栏目名称</th>
+                    <th class="table-title" width="30%">栏目名称</th>
                     <th class="table-title" width="20%">栏目类型</th>
-                    <th class="table-title" width="10%">上级栏目</th>
+                    
                     <th class="table-set" width="30%">操作</th>
                   </tr>
                 </thead>
                 <tbody>
-                 
+                {volist name="cate" id="vo"}
                   <tr>
                     <td><input type="checkbox"></td>
-                    <td>11</td>
-                    <td>22</td>
-                    <td>33</td>
-                    <td><a href="#">1</a></td>
+                    <td>{$vo.id}</td>
+                    <td>{if condition="$vo['level'] neq 0"}|{/if}<?php echo str_repeat('- - - ',$vo['level'])?>{$vo.catename}</td>
+                    <td>
+                      {$vo.type=='1' ? '列表' : '单页';}
+                    </td>
+      
                     <td>
                       <div class="am-btn-toolbar">
-
                         <div class="am-btn-group am-btn-group-xs">
                             <a href=""><button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span>
                             编辑</button></a>
-                            <a href="javascript:;"><button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span
+                            <a href="{:url('del',['id'=>$vo.id])}"><button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span
                               class="am-icon-trash-o"></span>
                             删除</button></a>
                         </div>
                       </div>
                     </td>
                   </tr>
-                  
+                {/volist}
                 </tbody>
               </table>
               <script>

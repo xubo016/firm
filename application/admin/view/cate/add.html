@@ -33,10 +33,10 @@
                 <div class="am-form-group">
                   <label for="user-mima" class="am-u-sm-3 am-form-label">上级栏目 / column</label>
                   <div class="am-u-sm-9">
-                    <select name="pid" data-am-selected="{searchBox: 1}">
+                    <select name="pid" data-am-selected="{searchBox: 1}" >
                       <option value="0">-顶级栏目</option>
                       {volist name="value" id="vo"}
-                        <option value="{$vo.id}">{$vo.catename}</option>
+                        <option value="{$vo.id}">{if condition="$vo['level'] neq 0"}|{/if}<?php echo str_repeat('-',$vo['level']*3)?>{$vo.catename}</option>
                       {/volist}
                     </select>
                   </div>
