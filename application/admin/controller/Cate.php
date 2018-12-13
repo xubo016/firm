@@ -63,5 +63,29 @@ class Cate extends Common
       db('cate')->delete($son);
     }
   }
+
+  /**
+   * 栏目修改
+   */
+  public function edit($id){
+    $cate = new CateModel;
+    if(request()->isPost()){
+      $data = input('post.');
+      $save = $cate->save($data,['id'=>input('id')]);
+      if($save){
+        $this->success('修改成功','lst');
+      }else{
+        $this->error('修改失败');
+      }
+      return;
+    }
+    $code = $cate->catetree();
+    $res = db('cate')->find($id);
+    if(!$res){
+      $this->error('栏目不存在');
+    }
+    $this->assign(array('cate'=>$code,'res'=>$res));
+    return view();
+  }
 }
 ?>

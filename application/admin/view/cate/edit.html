@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Amaze UI Admin index Examples</title>
+  <meta name="description" content="这是一个 index 页面">
+  <meta name="keywords" content="index">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <!-- css文件 -->
+  {include file="public/title" /}
+</head>
+<body data-type="generalComponents">
+  <!-- 头部 -->
+  {include file="public/header" /}
+  <div class="tpl-page-container tpl-page-header-fixed">
+    <!-- 左侧导航 -->
+    {include file="public/leftNav" /}
+    <div class="tpl-content-wrapper">
+      <ol class="am-breadcrumb">
+        <li><a href="#" class="am-icon-home">首页</a></li>
+        <li><a href="#">栏目管理</a></li>
+        <li class="am-active">栏目添加</li>
+      </ol>
+      <div class="tpl-portlet-components">
+        <div class="tpl-block ">
+          <div class="am-g tpl-amazeui-form">
+            <div class="am-u-sm-12 am-u-md-9">
+              <form class="am-form am-form-horizontal" method="post" action="">
+                <input type="hidden" name="id" value="{$res.id}">
+                <div class="am-form-group">
+                  <label for="user-mima" class="am-u-sm-3 am-form-label">上级栏目 / column</label>
+                  <div class="am-u-sm-9">
+                    <select name="pid" data-am-selected="{searchBox: 1}">
+                      <option value="0">-顶级栏目</option>
+                      {volist name="cate" id="vo"}
+                        <option value="{$vo.id}" {if condition="$res['pid'] eq $vo['id']"}selected="selected"{/if}>{if condition="$vo['level'] neq 0"}|{/if}<?php echo str_repeat('-',$vo['level']*3)?>{$vo.catename}</option>
+                      {/volist}
+                    </select>
+                  </div>
+                </div>
+                <div class="am-form-group">
+                  <label for="user-name" class="am-u-sm-3 am-form-label">栏目名称 / Name</label>
+                  <div class="am-u-sm-9">
+                    <input type="text" name="catename" id="user-name" value="{$res.catename}">
+                  </div>
+                </div>
+                <div class="am-form-group">
+                  <label for="user-name" class="am-u-sm-3 am-form-label">栏目类型 / Type</label>
+                  <div class="am-u-sm-9">
+                    <label class="am-radio-inline">
+                      <input type="radio" {if condition="$res['type'] eq 1"}checked="checked"{/if} name="type" value="1"/> 列表
+                    </label>
+                    <label class="am-radio-inline">
+                      <input type="radio" {if condition="$res['type'] eq 2"}checked="checked"{/if} name="type" value="2"> 单页
+                    </label>
+                  </div>
+                </div>
+                <div class="am-form-group">
+                  <div class="am-u-sm-9 am-u-sm-push-3">
+                    <button type="submit" class="am-btn am-btn-primary">修改</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- js -->
+  {include file="public/foot" /}
+</body>
+</html>
