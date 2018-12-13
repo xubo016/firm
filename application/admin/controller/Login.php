@@ -8,10 +8,13 @@ class Login extends Controller
    * 管理员登录
    */
   public function index(){
-    // $this->check_verify(input('code'));
     $admin = new Admin();
     if(request()->isPost()){
       $num = $admin->login(input('post.'));
+      $data = $this->check_verify(input('code'));
+      if(!$data){
+        $this->error('验证码错误');
+      }
       if($num == 1){
         $this->error('用户不存在');
       }
@@ -29,15 +32,14 @@ class Login extends Controller
   /**
    * 验证码验证
    */
-  // function check_verify($code){
-    // $captcha = new Captcha();
-    // $res = $captcha->check($code);
-    // if(!$res){
-    //   $this->error('验证码错误');
-    // }else{
-    //   return true;
-    // }
-  // }
+  function check_verify($code=''){
+    $captcha = new \think\captcha\Captcha();
+    if (!$captcha->check($code)) {
+      return false;
+    }else{
+      return true;
+    }
+  }
   
   /**
    * 空操作
