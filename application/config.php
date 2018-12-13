@@ -238,4 +238,14 @@ return [
         'var_page'  => 'page',
         'list_rows' => 15,
     ],
+
+    // 验证码
+    'captcha'  => [
+        // 验证码字符集合
+        'codeSet'   =>  '123456789',
+        // 验证码位数
+        'length'    =>  4,
+        // 验证成功后是否重置   
+        'reset'     =>  true,
+    ],
 ];

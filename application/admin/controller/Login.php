@@ -8,6 +8,7 @@ class Login extends Controller
    * 管理员登录
    */
   public function index(){
+    // $this->check_verify(input('code'));
     $admin = new Admin();
     if(request()->isPost()){
       $num = $admin->login(input('post.'));
@@ -25,6 +26,19 @@ class Login extends Controller
     return view();
   }
 
+  /**
+   * 验证码验证
+   */
+  // function check_verify($code){
+    // $captcha = new Captcha();
+    // $res = $captcha->check($code);
+    // if(!$res){
+    //   $this->error('验证码错误');
+    // }else{
+    //   return true;
+    // }
+  // }
+  
   /**
    * 空操作
    */

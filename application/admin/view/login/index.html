@@ -35,7 +35,17 @@
           </div>
 					<div class="am-form-group">
 						<input type="password" name="password" class="" id="doc-ipt-pwd-1" placeholder="请输入密码">
-					</div>
+          </div>
+          <br/>
+          <div class="am-form-inline">
+            <div class="am-form-group">
+              <input type="text" name="code" placeholder="请输入验证码">
+            </div>
+            <div class="am-form-group">
+              <img src="{:captcha_src()}" style="cursor:pointer;" width="70%" onclick="this.src='{:captcha_src()}?'+Match.random();" alt="captcha" />
+            </div>
+          </div>
+          
 					<p><button type="submit" class="am-btn am-btn-default">登录</button></p>
 				</fieldset>
 			</form>
