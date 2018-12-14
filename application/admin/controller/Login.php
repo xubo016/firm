@@ -45,7 +45,7 @@ class Login extends Controller
    * 空操作
    */
   public function _empty(){
-    $this->redirect('index/index');
+    $this->redirect('login/index');
   }
 }
 ?>

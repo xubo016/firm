@@ -6,6 +6,9 @@ use app\admin\model\Article as ArticleModel;
 class Article extends Common
 {
   
+  /**
+   * 文章添加
+   */
   public function add(){
     if(request()->isPost()){
       $data = input('post.');
@@ -23,13 +26,49 @@ class Article extends Common
     return view();
   }
 
+  /**
+   * 文章列表
+   */
   public function lst(){
+    $art = db('article')->field('a.*,b.catename')->alias('a')->join('qy_cate b','a.cateid=b.id')->paginate(10);
+    $this->assign("article",$art);
     return view();
   }
 
+  /**
+   * 文章修改
+   */
   public function edit(){
+    $tree = new CateModel;
+    $value = $tree->catetree();
+    $article = db('article')->find(input('id'));
+    $this->assign(array(
+      'article'=>$article,
+      'value'=>$value
+    ));
+    if(request()->isPost()){
+      $art = new ArticleModel;
+      $res = $art->update(input('post.'));
+      if($res){
+        $this->success('修改成功','lst');
+      }else{
+        $this->error('修改失败');
+      }
+    }
     return view();
   }
-  
+
+  /**
+   * 文章删除
+   */
+  public function del(){
+    $arts = new ArticleModel;
+    if($arts::destroy(input('id'))){
+      $this->success('删除成功','lst');
+    }else{
+      $this->error('删除失败','lst');
+    }
+  }
+
 }
 ?>

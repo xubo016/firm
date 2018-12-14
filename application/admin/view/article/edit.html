@@ -38,10 +38,11 @@
           <div class="am-g">
             <div class="tpl-form-body tpl-form-line">
               <form class="am-form tpl-form-line-form" enctype="multipart/form-data" action="" method="POST">
+                <input type="hidden" name="id" value="{$article.id}">
                 <div class="am-form-group">
                   <label for="user-name" class="am-u-sm-3 am-form-label">标题 <span class="tpl-form-line-small-title">Title</span></label>
                   <div class="am-u-sm-9">
-                    <input type="text" name="title" class="tpl-form-input" required oninvalid="setCustomValidity('请您输入标题');" oninput="setCustomValidity('');" id="user-name" placeholder="请输入标题文字">
+                    <input type="text" name="title" class="tpl-form-input" id="user-name" value="{$article.title}">
                     <small>请填写标题文字10-20字左右。</small>
                   </div>
                 </div>
@@ -49,34 +50,36 @@
                 <div class="am-form-group">
                   <label for="user-name" class="am-u-sm-3 am-form-label">作者 <span class="tpl-form-line-small-title">Author</span></label>
                   <div class="am-u-sm-9">
-                    <input type="text" name="author" class="tpl-form-input" required oninvalid="setCustomValidity('请您输入作者');" oninput="setCustomValidity('');" id="user-name" placeholder="作者">
+                    <input type="text" name="author" class="tpl-form-input" id="user-name" value="{$article.author}">
                   </div>
                 </div>
 
                 <div class="am-form-group">
                   <label class="am-u-sm-3 am-form-label">SEO关键字 <span class="tpl-form-line-small-title">SEO</span></label>
                   <div class="am-u-sm-9">
-                    <input type="text" required oninvalid="setCustomValidity('请您输入关键词');" oninput="setCustomValidity('');" name="keyword" placeholder="输入SEO关键字">
+                    <input type="text" name="keyword" value="{$article.keyword}">
                   </div>
                 </div>
 
-                <div class="am-form-group">
-                  <label for="user-phone" class="am-u-sm-3 am-form-label">所属栏目 </label>
-                  <div class="am-u-sm-9">
-                    <select name="cateid" data-am-selected="{searchBox: 1}">
-                      {volist name="value" id="vo"}
-                        <option value="{$vo.id}">{if condition="$vo['level'] neq 0"}|{/if}<?php echo str_repeat('-',$vo['level']*3)?>{$vo.catename}</option>
-                      {/volist}
-                    </select>
+                  <div class="am-form-group">
+                    <label for="user-phone" class="am-u-sm-3 am-form-label">所属栏目 </label>
+                    <div class="am-u-sm-9">
+                      <select name="cateid" data-am-selected="{searchBox: 1}">
+                        {volist name="value" id="vo"}
+                          <option value="{$vo.id}" {if condition="$vo['id'] eq $article['cateid']"}selected{/if}>{if condition="$vo['level'] neq 0"}|{/if}<?php echo str_repeat('-',$vo['level']*3)?>{$vo.catename}</option>
+                        {/volist}
+                      </select>
+                    </div>
                   </div>
-                </div>
 
                 <div class="am-form-group">
                   <label for="user-weibo" class="am-u-sm-3 am-form-label">封面图 <span class="tpl-form-line-small-title">Images</span></label>
                   <div class="am-u-sm-9">
                     <div class="am-form-group am-form-file">
                       <div class="tpl-form-file-img">
-                        <img src="###" id="previewImg" width="100%" height="100%" alt="">
+                        {if condition="$article['pic'] neq ''"}
+                        <img src="{$article.pic}" id="previewImg" width="100%" height="100%" alt="">
+                        {/if}
                       </div>
                       <button type="button" class="am-btn am-btn-danger am-btn-sm">
                         <i class="am-icon-cloud-upload"></i> 添加封面图片</button>
@@ -88,14 +91,14 @@
                 <div class="am-form-group">
                   <label for="user-intro" class="am-u-sm-3 am-form-label">文章描述</label>
                   <div class="am-u-sm-9">
-                    <textarea class="" name="desc" rows="10" id="user-intro" placeholder="请输入文章描述"></textarea>
+                    <textarea class="" name="desc" rows="10" id="user-intro">{$article.desc}</textarea>
                   </div>
                 </div>
 
                 <div class="am-form-group">
                   <label for="user-intro" class="am-u-sm-3 am-form-label">文章内容</label>
                   <div class="am-u-sm-9">
-                      <textarea id="editor" name="centent" type="text/plain" style="width:100%; height:500px;"></textarea>
+                      <textarea id="editor" name="centent" type="text/plain" style="width:100%; height:500px;">{$article.centent}</textarea>
                   </div>
                 </div> 
 

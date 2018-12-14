@@ -87,5 +87,6 @@ class Cate extends Common
     $this->assign(array('cate'=>$code,'res'=>$res));
     return view();
   }
+
 }
 ?>

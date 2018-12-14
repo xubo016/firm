@@ -105,11 +105,4 @@ class Admin extends Common
     session(null);
     $this->success('退出系统成功','login/index');
   }
-
-  /**
-   * 空操作
-   */
-  public function _empty(){
-    $this->redirect('index/index');
-  }
 }

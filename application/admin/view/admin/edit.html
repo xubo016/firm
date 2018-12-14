@@ -35,7 +35,7 @@
                 <div class="am-form-group">
                   <label for="user-name" class="am-u-sm-3 am-form-label">姓名 / Name</label>
                   <div class="am-u-sm-9">
-                    <input type="text" name="user" id="user-name" value="{$admin.user}">
+                    <input type="text" required oninvalid="setCustomValidity('请输入您的姓名');" oninput="setCustomValidity('');" name="user" id="user-name" value="{$admin.user}">
                     <small>输入你的名字，让我们记住你。</small>
                   </div>
                 </div>
