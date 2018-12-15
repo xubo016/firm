@@ -22,8 +22,8 @@
     <div class="tpl-content-wrapper">
       <ol class="am-breadcrumb">
         <li><a href="#" class="am-icon-home">首页</a></li>
-        <li><a href="#">管理员管理</a></li>
-        <li class="am-active">管理员列表</li>
+        <li><a href="#">栏目管理</a></li>
+        <li class="am-active">栏目列表</li>
       </ol>
       <div class="tpl-portlet-components">
         <div class="tpl-block">
@@ -75,9 +75,14 @@
                     <td>{$vo.id}</td>
                     <td>{if condition="$vo['level'] neq 0"}|{/if}<?php echo str_repeat('- - - ',$vo['level'])?>{$vo.catename}</td>
                     <td>
-                      {$vo.type=='1' ? '列表' : '单页';}
+                      {if condition="$vo['type'] eq 1"}
+                      文章列表
+                      {elseif condition="$vo['type'] eq 2"}
+                      单页
+                      {else /}
+                      图片列表
+                      {/if}
                     </td>
-      
                     <td>
                       <div class="am-btn-toolbar">
                         <div class="am-btn-group am-btn-group-xs">

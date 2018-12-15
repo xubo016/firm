@@ -22,8 +22,8 @@
     <div class="tpl-content-wrapper">
       <ol class="am-breadcrumb">
         <li><a href="#" class="am-icon-home">首页</a></li>
-        <li><a href="#">文章管理</a></li>
-        <li class="am-active">文章列表</li>
+        <li><a href="#">友情链接</a></li>
+        <li class="am-active">链接列表</li>
       </ol>
       <div class="tpl-portlet-components">
         <div class="tpl-block">
@@ -42,8 +42,8 @@
               <div class="am-form-group">
                 <select data-am-selected="{btnSize: 'sm'}">
                   <option value="option1">所有类别</option>
-                  <option value="option2">超级管理员</option>
-                  <option value="option3">普通管理员</option>
+                  <option value="option2">顶级栏目</option>
+                  <option value="option3">二级栏目</option>
                 </select>
               </div>
             </div>
@@ -61,58 +61,59 @@
               <table class="am-table am-table-striped am-table-hover table-main">
                 <thead>
                   <tr>
-                    <th class="table-check" width="5%"><input type="checkbox" class="tpl-table-fz-check"></th>
-                    <th class="table-id" width="5%">ID</th>
-                    <th class="table-title" width="10%">文章缩略图</th>
-                    <th class="table-set" width="10%">标题</th>
-                    <th class="table-set" width="15%">描述</th>
-                    <th class="table-set" width="10%">作者</th>
-                    <th class="table-set" width="10%">所属栏目</th>
-                    <th class="table-set" width="10%">发布时间</th>
-                    <th class="table-set" width="25%">操作</th>
+                    <th class="table-check" width="10%"><input type="checkbox" class="tpl-table-fz-check"></th>
+                    <th class="table-id" width="10%">ID</th>
+                    <th class="table-title" width="20%">链接名称</th>
+                    <th class="table-title" width="20%">链接地址</th>
+                    <th class="table-title" width="20%">描述</th>
+                    <th class="table-set" width="20%">操作</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {volist name="article" id="vo"}
+                {volist name="link" id="vo"}
                   <tr>
                     <td><input type="checkbox"></td>
                     <td>{$vo.id}</td>
-                    <td><a href="#">
-                      {if condition="$vo['pic'] neq ''"}
-                      <img src="{$vo.pic}" width="100%" alt="">
-                      {else /}
-                      暂无缩略图
-                      {/if}
-                    </a></td>
-                    <td><a href="#"><?php echo mb_substr($vo['title'],0,26); if(mb_strlen($vo['title'])>26){echo '...';};?></a></td>
-                    <td><a href="#"><?php echo mb_substr($vo['desc'],0,44); if(mb_strlen($vo['desc'])>44){echo '...';};?></a></td>
-                    <td>{$vo.author}</td>
-                    <td>{$vo.catename}</td>
-                    <td>{$vo.time}</td>
+                    <td>{$vo.title}</td>
+                    <td><a href="{$vo.url}" target="_blank">{$vo.url}</a></td>
+                    <td>{$vo.desc}</td>
                     <td>
                       <div class="am-btn-toolbar">
-
                         <div class="am-btn-group am-btn-group-xs">
                             <a href="{:url('edit',['id'=>$vo.id])}"><button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span>
                             编辑</button></a>
-                            <a href="{:url('del',['id'=>$vo.id])}"><button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span
+                            <a href="javascript:void(0);" onclick="del(this,{$vo.id})"><button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span
                               class="am-icon-trash-o"></span>
                             删除</button></a>
                         </div>
                       </div>
                     </td>
                   </tr>
-                  {/volist}
+                {/volist}
                 </tbody>
               </table>
-              
+              <script>
+
+                /**
+                  * ajax单条删除
+                  */
+                function del(obj,id){
+                  $.post("{:url('link/del')}",{id:id},function(data){
+                    if(data.statu==200){
+                      layer.alert(data.info, {icon: 6});
+                      $(obj).parent().parent().parent().parent().remove();
+                    }else{
+                      layer.alert(data.info, {icon: 5});
+                    }
+                  })
+                }
+              </script>
               <div class="am-cf">
                 <div class="am-fr">
                   <!-- 分页 -->
-                  {$article->render()}
+                  {$link->render()}
                 </div>
               </div>
-
               <hr>
             </div>
           </div>

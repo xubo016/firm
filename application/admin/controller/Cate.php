@@ -59,6 +59,11 @@ class Cate extends Common
     $cateid = input('id'); //要删除的当前栏目id
     $cate = new CateModel;
     $son = $cate->getchilrenid($cateid);
+    $article = $son;
+    $article[] = $cateid;
+    foreach($article as $k => $v){
+      db('article')->where('cateid',$v)->delete();
+    }
     if($son){
       db('cate')->delete($son);
     }
