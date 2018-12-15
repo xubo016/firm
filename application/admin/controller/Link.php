@@ -9,7 +9,14 @@ class Link extends Common
    */
   public function add(){
     if(request()->isPost()){
-      $add = db('link')->insert(input('post.'));
+      //数据验证
+      $data = input('post.');
+      $validate = \think\Loader::validate('Link');
+      if(!$validate->scene('add')->check($data)){
+        $this->error($validate->getError());
+      }
+      //数据添加
+      $add = db('link')->insert($data);
       if($add){
         $this->success('添加成功');
       }else{
