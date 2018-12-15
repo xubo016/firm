@@ -13,10 +13,15 @@ class Admin extends Common
   {
     //判断是否是post来的数据
     if(request()->isPost()){
+      $data = input('post.');
+      $validate = \think\Loader::validate('Admin');
+      if(!$validate->scene('add')->check($data)){
+        $this->error($validate->getError());
+      }
       //实列化控制器方法
       $admin = new AdminModel();
       //将接收的数组传递到模型
-      $res = $admin->addadmin(input('post.'));
+      $res = $admin->addadmin($data);
       //判断添加是否成功
       if($res){
         $this->success('添加成功');
@@ -74,6 +79,10 @@ class Admin extends Common
     //修改信息
     if(request()->isPost()){
       $data = input('post.');
+      $validate = \think\Loader::validate('Admin');
+      if(!$validate->scene('edit')->check($data)){
+        $this->error($validate->getError());
+      }
       if(!$data['user']){
         $this->error('管理员用户名不能为空');
       }

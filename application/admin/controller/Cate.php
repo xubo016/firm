@@ -17,7 +17,12 @@ class Cate extends Common
   public function add(){
     $cate = new CateModel;
     if(request()->isPost()){
-      $res = $cate->addcate(input('post.'));
+      $data = input('post.');
+      $validate = \think\Loader::validate('Cate');
+      if(!$validate->scene('add')->check($data)){
+        $this->error($validate->getError());
+      }
+      $res = $cate->addcate($data);
       if($res){
         $this->success("添加成功");
       }else{
@@ -76,6 +81,10 @@ class Cate extends Common
     $cate = new CateModel;
     if(request()->isPost()){
       $data = input('post.');
+      $validate = \think\Loader::validate('Cate');
+      if(!$validate->scene('edit')->check($data)){
+        $this->error($validate->getError());
+      }
       $save = $cate->save($data,['id'=>input('id')]);
       if($save){
         $this->success('修改成功','lst');

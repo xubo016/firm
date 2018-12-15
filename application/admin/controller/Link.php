@@ -43,7 +43,12 @@ class Link extends Common
   public function edit(){
     $code = new LinkModel;
     if(request()->isPost()){
-      $res = $code->where('id',input('id'))->update(input('post.'));
+      $data = input('post.');
+      $validate = \think\Loader::validate('Link');
+      if(!$validate->scene('edit')->check($data)){
+        $this->error($validate->getError());
+      }
+      $res = $code->where('id',input('id'))->update($data);
       if($res){
         $this->success('修改成功','lst');
       }else{

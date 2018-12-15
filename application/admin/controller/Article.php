@@ -12,6 +12,10 @@ class Article extends Common
   public function add(){
     if(request()->isPost()){
       $data = input('post.');
+      $validate = \think\Loader::validate('Article');
+      if(!$validate->scene('add')->check($data)){
+        $this->error($validate->getError());
+      }
       $article = new ArticleModel;
       if($article->save($data)){
         $this->success("添加文章成功");
@@ -47,8 +51,13 @@ class Article extends Common
       'value'=>$value
     ));
     if(request()->isPost()){
+      $data = input('post.');
+      $validate = \think\Loader::validate('Article');
+      if(!$validate->scene('edit')->check($data)){
+        $this->error($validate->getError());
+      }
       $art = new ArticleModel;
-      $res = $art->update(input('post.'));
+      $res = $art->update($data);
       if($res){
         $this->success('修改成功','lst');
       }else{
