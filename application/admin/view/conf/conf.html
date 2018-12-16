@@ -56,7 +56,8 @@
                     <?php elseif($v['type']==5):
                       if($v['values']){
                         $arrsel = explode(',',$v['values']);
-                      }?>
+                      }
+                    ?>
                       <select name="<?php echo $v['enname'];?>" data-am-selected="{searchBox: 1}">
                         <?php foreach($arrsel as $k2 => $v2):?>
                           <option value="<?php echo $v2;?>"><?php echo $v2;?></option>
