@@ -51,7 +51,7 @@
                     <?php endforeach;?>
                     <?php elseif($v['type']==4):?>
                       <label class="am-checkbox-inline">
-                        <input type="checkbox" name="<?php echo $v['enname'];?>" value="<?php echo $v['values']?>"> <?php echo $v['values']?>
+                        <input type="checkbox" name="<?php echo $v['enname'];?>" value="<?php echo $v['values'];?>"> <?php echo $v['values'];?>
                       </label>
                     <?php elseif($v['type']==5):
                       if($v['values']){
@@ -60,12 +60,12 @@
                       <select name="<?php echo $v['enname'];?>" data-am-selected="{searchBox: 1}">
                         <?php foreach($arrsel as $k2 => $v2):?>
                           <option value="<?php echo $v2;?>"><?php echo $v2;?></option>
-                        <?php endforeach?>
+                        <?php endforeach;?>
                       </select>
                     <?php endif;?>
                   </div>
                 </div>
-                <?php endforeach?>
+                <?php endforeach;?>
                 <div class="am-form-group">
                   <div class="am-u-sm-9 am-u-sm-push-3">
                     <button type="submit" class="am-btn am-btn-primary">确定</button>
