@@ -63,7 +63,9 @@
                   <tr>
                     <th class="table-check" width="10%"><input type="checkbox" class="tpl-table-fz-check"></th>
                     <th class="table-id" width="10%">ID</th>
-                    <th class="table-title" width="50%">管理员</th>
+                    <th class="table-title" width="10%">管理员</th>
+                    <th class="table-title" width="20%">邮箱</th>
+                    <th class="table-title" width="20%">创建时间</th>
                     <th class="table-set" width="30%">操作</th>
                   </tr>
                 </thead>
@@ -73,6 +75,8 @@
                     <td><input type="checkbox"></td>
                     <td>{$value.id}</td>
                     <td><a href="#">{$value.user}</a></td>
+                    <td>{$value.email}</td>
+                    <td>{$value.create_time}</td>
                     <td>
                       <div class="am-btn-toolbar">
 

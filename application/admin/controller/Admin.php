@@ -1,8 +1,8 @@
 <?php
 namespace app\admin\controller;
 use app\admin\controller\Common;
-use think\Db;
 use app\admin\model\Admin as AdminModel;
+use app\admin\validate\Admin as AdminValidate;
 class Admin extends Common
 {
 
@@ -14,9 +14,10 @@ class Admin extends Common
     //判断是否是post来的数据
     if(request()->isPost()){
       $data = input('post.');
-      $validate = \think\Loader::validate('Admin');
-      if(!$validate->scene('add')->check($data)){
-        $this->error($validate->getError());
+      $val = new AdminValidate();
+      if(!$val->check($data)){
+        $this->error($val->getError());
+        exit;
       }
       //实列化控制器方法
       $admin = new AdminModel();
@@ -52,7 +53,7 @@ class Admin extends Common
     //接收数据 /d强制转换整型防止sql注入
     $id = input("post.id/d");
     //执行删除
-    $code = Db::execute("delete from qy_admin where id = $id");
+    $code = AdminModel::destroy($id);
     //判断是否成功
     if($code){
       $data=[
@@ -83,12 +84,8 @@ class Admin extends Common
       if(!$validate->scene('edit')->check($data)){
         $this->error($validate->getError());
       }
-      if(!$data['password']){
-        $data['password'] = $code['password'];
-      }else{
-        $data['password']=md5($data['password']);
-      }
-      $res = db('admin')->update($data);
+      $admin = new AdminModel();
+      $res = $admin->save($data,['id'=>input('id')]);
       if($res !== false){
         $this->success('修改成功','lst');
       }else{

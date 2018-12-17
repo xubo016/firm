@@ -1,9 +1,33 @@
 <?php
 namespace app\admin\model;
 use think\Model;
+use traits\model\SoftDelete;
 class Admin extends Model
 {
-  
+  /** 
+   * 软删除
+   */
+   use SoftDelete;
+   protected static $deleteTime = 'delete_time';
+   /** 
+   * 自动写入时间戳
+   */
+  protected $autoWriteTimestamp = 'datetime';
+  /** 
+   * 自动完成
+   */
+  protected function setIpAttr()
+  {
+    return request()->ip();
+  }
+  protected function setPasswordAttr($value)
+  {
+    return md5($value);
+  }
+  protected function setRepasswordAttr($value)
+  {
+    return md5($value);
+  }
   /** 
    * 添加数据
    */
@@ -11,10 +35,6 @@ class Admin extends Model
     //判断传递的值不为空并且是数组
     if(empty($data) || !is_array($data)){
       return false;
-    }
-    //md5()加密密码
-    if($data['password']){
-      $data['password'] = md5($data['password']); 
     }
     //执行添加
     $res = $this->save($data);

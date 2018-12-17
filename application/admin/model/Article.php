@@ -3,6 +3,14 @@ namespace app\admin\model;
 use think\Model;
 class Article extends Model
 {
+  /** 
+   * 自动写入时间戳
+   */
+  protected $autoWriteTimestamp = 'datetime';
+  protected $updateTime = false;
+  /**
+   * 文件上传
+   */
   protected static function init()
   {
       /**
