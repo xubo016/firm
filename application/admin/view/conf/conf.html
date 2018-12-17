@@ -46,12 +46,12 @@
                       foreach($arr as $k1 => $v1):
                     ?>
                       <label class="am-radio-inline">
-                        <input type="radio" name="<?php echo $v['enname'];?>" value="<?php echo $v1;?>" checked/> <?php echo $v1;?>
+                        <input type="radio" <?php if($v['value']==$v1):?>checked<?php endif;?> name="<?php echo $v['enname'];?>" value="<?php echo $v1;?>" /> <?php echo $v1;?>
                       </label>
                     <?php endforeach;?>
                     <?php elseif($v['type']==4):?>
                       <label class="am-checkbox-inline">
-                        <input type="checkbox" name="<?php echo $v['enname'];?>" value="<?php echo $v['values'];?>"> <?php echo $v['values'];?>
+                        <input type="checkbox" <?php if($v['value']==$v['values']):?>checked<?php endif?> name="<?php echo $v['enname'];?>" value="<?php echo $v['values'];?>"> <?php echo $v['values'];?>
                       </label>
                     <?php elseif($v['type']==5):
                       if($v['values']){
@@ -60,7 +60,7 @@
                     ?>
                       <select name="<?php echo $v['enname'];?>" data-am-selected="{searchBox: 1}">
                         <?php foreach($arrsel as $k2 => $v2):?>
-                          <option value="<?php echo $v2;?>"><?php echo $v2;?></option>
+                          <option <?php if($v['value']==$v2):?>selected<?php endif;?> value="<?php echo $v2;?>"><?php echo $v2;?></option>
                         <?php endforeach;?>
                       </select>
                     <?php endif;?>

@@ -11,6 +11,10 @@ class Conf extends Common
     $conf = new ConfModel;
     if(request()->isPost()){
       $data = input('post.');
+      $validate = \think\Loader::validate('Conf');
+      if(!$validate->scene('add')->check($data)){
+        $this->error($validate->getError());
+      }
       if($data['values']){
         $data['values']=str_replace('，',',',$data['values']);
       }
@@ -40,10 +44,15 @@ class Conf extends Common
     if(request()->isPost()){
       $res = new ConfModel;
       $data = input('post.');
+      $validate = \think\Loader::validate('Conf');
+      if(!$validate->scene('edit')->check($data)){
+        $this->error($validate->getError());
+      }
       if($data['values']){
         $data['values'] = str_replace('，',',',$data['values']);
       }
-      if($res->save($data,['id'=>input('id')])){
+      $code = $res->save($data,['id'=>input('id')]);
+      if($code !== false){
         $this->success('修改成功','lst');
       }else{
         $this->error('修改失败');
@@ -77,6 +86,34 @@ class Conf extends Common
    * 配置项
    */
   public function conf(){
+    if(request()->isPost()){
+      $data = input('post.');
+      foreach($data as $k => $v){
+        $form[] = $k;
+      }
+      $enname = db('conf')->field('enname')->select();
+      foreach($enname as $k => $v){
+        $arr[] = $v['enname'];
+      }
+      foreach($arr as $k => $v){
+        if(!in_array($v,$form)){
+          $code[] = $v;
+        }
+      }
+      
+      if($code){
+        foreach($code as $k => $v){
+          ConfModel::where('enname',$v)->update(['value'=>'']);
+        }
+      }
+      if($data){
+        foreach($data as $k => $v){
+          db('conf')->where('enname',$k)->update(['value'=>$v]);
+        }
+      }
+      $this->success('修改成功');
+      return;
+    }
     $confres = db('conf')->select();
     $this->assign('conf',$confres);
     return view();
