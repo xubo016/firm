@@ -17,7 +17,7 @@
             <span>管理员</span>
             <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
           </a>
-          <ul class="tpl-left-nav-sub-menu">
+          <ul class="tpl-left-nav-sub-menu"  style="display: block;">
             <li>
               <a href="{:url('admin/add')}">
                 <i class="am-icon-angle-right"></i>
@@ -27,6 +27,15 @@
               <a href="{:url('admin/lst')}">
                 <i class="am-icon-angle-right"></i>
                 <span>管理员列表</span>
+              </a>
+              <a href="{:url('authGroup/add')}">
+                <i class="am-icon-angle-right"></i>
+                <span>用户组添加</span>
+                <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+              </a>
+              <a href="{:url('authGroup/lst')}">
+                <i class="am-icon-angle-right"></i>
+                <span>用户组列表</span>
               </a>
             </li>
           </ul>
@@ -97,7 +106,7 @@
             <span>系统</span>
             <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
           </a>
-          <ul class="tpl-left-nav-sub-menu" style="display: block;">
+          <ul class="tpl-left-nav-sub-menu">
             <li>
               <a href="{:url('conf/conf')}">
                 <i class="am-icon-angle-right"></i>
