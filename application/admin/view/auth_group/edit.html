@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Amaze UI Admin index Examples</title>
+  <meta name="description" content="这是一个 index 页面">
+  <meta name="keywords" content="index">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <!-- css文件 -->
+  {include file="public/title" /}
+</head>
+
+<body data-type="generalComponents">
+  <!-- 头部 -->
+  {include file="public/header" /}
+  <div class="tpl-page-container tpl-page-header-fixed">
+    <!-- 左侧导航 -->
+    {include file="public/leftNav" /}
+    <div class="tpl-content-wrapper">
+      <ol class="am-breadcrumb">
+        <li><a href="#" class="am-icon-home">首页</a></li>
+        <li><a href="#">管理员</a></li>
+        <li class="am-active">用户组添加</li>
+      </ol>
+      <div class="tpl-portlet-components">
+        <div class="tpl-block">
+          <div class="am-g tpl-amazeui-form">
+            <div class="am-u-sm-12 am-u-md-9">
+              <form class="am-form am-form-horizontal" method="post" action="">
+                <input type="hidden" name="id" value="{$AuthGroup.id}">
+                <div class="am-form-group">
+                  <label for="user-name" class="am-u-sm-3 am-form-label">用户组名 / Name</label>
+                  <div class="am-u-sm-9">
+                    <input type="text" name="title" required oninvalid="setCustomValidity('请输入用户组名');" oninput="setCustomValidity('');" id="user-name" value="{$AuthGroup.title}">
+                  </div>
+                </div>
+                <div class="am-form-group">
+                  <label for="user-mima" class="am-u-sm-3 am-form-label">是否启用</label>
+                  <div class="am-u-sm-9">
+                      <input type="checkbox" {if condition="$AuthGroup['status'] eq 1"}checked{/if} value="1" name="status" data-am-switch />
+                  </div>
+                </div>
+                <div class="am-form-group">
+                  <label for="user-intro" class="am-u-sm-3 am-form-label">描述</label>
+                  <div class="am-u-sm-9">
+                    <textarea class="" name="rules" rows="10" id="user-intro"></textarea>
+                  </div>
+                </div>
+                <div class="am-form-group">
+                  <div class="am-u-sm-9 am-u-sm-push-3">
+                    <button type="submit" class="am-btn am-btn-primary">修改</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- js -->
+  {include file="public/foot" /}
+</body>
+</html>

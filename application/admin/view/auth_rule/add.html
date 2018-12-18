@@ -23,8 +23,8 @@
     <div class="tpl-content-wrapper">
       <ol class="am-breadcrumb">
         <li><a href="#" class="am-icon-home">首页</a></li>
-        <li><a href="#">友情链接</a></li>
-        <li class="am-active">链接添加</li>
+        <li><a href="#">管理员</a></li>
+        <li class="am-active">权限添加</li>
       </ol>
       <div class="tpl-portlet-components">
         <div class="tpl-block">
@@ -32,21 +32,26 @@
             <div class="am-u-sm-12 am-u-md-9">
               <form class="am-form am-form-horizontal" method="post" action="">
                 <div class="am-form-group">
-                  <label for="user-name" class="am-u-sm-3 am-form-label">链接名称</label>
+                  <label for="user-name" class="am-u-sm-3 am-form-label">上级权限</label>
                   <div class="am-u-sm-9">
-                    <input type="text" name="title" required oninvalid="setCustomValidity('请您输入链接名称');" oninput="setCustomValidity('');" id="user-name" placeholder="链接名称">
+                    <select name="pid" data-am-selected="{searchBox: 1}" >
+                      <option value="0">-顶级权限</option>
+                      {foreach $AuthRule as $vo}
+                        <option value="{$vo.id}"><?php if($vo['level'] != 0){ echo '|';} echo str_repeat('-',$vo['level']*3);?>{$vo.title}</option>
+                      {/foreach}
+                    </select>
                   </div>
                 </div>
                 <div class="am-form-group">
-                  <label for="user-mima" class="am-u-sm-3 am-form-label">链接地址</label>
+                  <label for="user-mima" class="am-u-sm-3 am-form-label">权限名称</label>
                   <div class="am-u-sm-9">
-                    <input type="text" name="url" required oninvalid="setCustomValidity('请您输入链接地址');" oninput="setCustomValidity('');" id="user-mima" placeholder="链接地址">
+                    <input type="text" name="title" required oninvalid="setCustomValidity('请输入权限名称');" oninput="setCustomValidity('');" id="user-name" placeholder="权限名称">
                   </div>
                 </div>
                 <div class="am-form-group">
-                  <label for="user-intro" class="am-u-sm-3 am-form-label">文章描述</label>
+                  <label for="user-intro" class="am-u-sm-3 am-form-label">控制器/方法</label>
                   <div class="am-u-sm-9">
-                    <textarea class="" name="desc" rows="10" id="user-intro" placeholder="请输入链接描述"></textarea>
+                    <input type="text" name="name" required oninvalid="setCustomValidity('请输入控制器/方法');" oninput="setCustomValidity('');" id="user-name" placeholder="控制器/方法">
                   </div>
                 </div>
                 <div class="am-form-group">

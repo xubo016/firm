@@ -34,13 +34,19 @@
                 <div class="am-form-group">
                   <label for="user-name" class="am-u-sm-3 am-form-label">用户组名 / Name</label>
                   <div class="am-u-sm-9">
-                    <input type="text" name="title" required oninvalid="setCustomValidity('请输入您的姓名');" oninput="setCustomValidity('');" id="user-name" placeholder="用户组名 / Name">
+                    <input type="text" name="title" required oninvalid="setCustomValidity('请输入用户组名');" oninput="setCustomValidity('');" id="user-name" placeholder="用户组名 / Name">
                   </div>
                 </div>
                 <div class="am-form-group">
                   <label for="user-mima" class="am-u-sm-3 am-form-label">是否启用</label>
                   <div class="am-u-sm-9">
-                      <input type="checkbox" value="1" data-am-switch checked/>
+                      <input type="checkbox" value="1" name="status" data-am-switch checked/>
+                  </div>
+                </div>
+                <div class="am-form-group">
+                  <label for="user-intro" class="am-u-sm-3 am-form-label">描述</label>
+                  <div class="am-u-sm-9">
+                    <textarea class="" name="rules" rows="10" id="user-intro" placeholder="请输入描述"></textarea>
                   </div>
                 </div>
                 <div class="am-form-group">
