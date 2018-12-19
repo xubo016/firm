@@ -2,9 +2,10 @@
 namespace app\admin\controller;
 use app\admin\Controller\Common;
 use app\admin\model\AuthGroup as AuthGroupModel;
+use app\admin\model\AuthRule as AuthRuleModel;
 class AuthGroup extends Common
 {
-  /** 
+  /**
    * 用户组添加
    */
   public function add(){
@@ -12,6 +13,9 @@ class AuthGroup extends Common
       $data = input('post.');
       if(!isset($data['status'])){
         $data['status'] = 0;
+      }
+      if($data['rules']){
+        $data['rules']=implode(',',$data['rules']);
       }
       $AuthGroupModel = new  AuthGroupModel();
       if($AuthGroupModel->save($data)){
@@ -21,6 +25,9 @@ class AuthGroup extends Common
       }
       return;
     }
+    $AuthRule = new AuthRuleModel();
+    $AuthRuleModel = $AuthRule->AuthRuleTree();
+    $this->assign('AuthRule',$AuthRuleModel);
     return view();
   }
 
@@ -43,6 +50,9 @@ class AuthGroup extends Common
       if(!isset($data['status'])){
         $data['status'] = 0;
       }
+      if($data['rules']){
+        $data['rules']=implode(',',$data['rules']);
+      }
       $code = db('Auth_group')->where('id',input('id'))->update($data);
       if($code){
         $this->success('修改成功','lst');
@@ -51,8 +61,14 @@ class AuthGroup extends Common
       }
       return;
     }
+    $AuthRule = new AuthRuleModel();
+    $AuthRuleModel = $AuthRule->AuthRuleTree();
+    
     $AuthGroup = db('Auth_group')->find(input('id'));
-    $this->assign('AuthGroup',$AuthGroup);
+    $this->assign(array(
+      'AuthGroup'=>$AuthGroup,
+      'AuthRule'=>$AuthRuleModel
+    ));
     return view();
   }
 

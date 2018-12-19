@@ -4,12 +4,6 @@ use app\admin\controller\Common;
 use app\admin\model\AuthRule as AuthRuleModel;
 class AuthRule extends Common
 {
-  /** 
-   * 权限删除前置操作
-   */
-  // protected $beforeActionList = [
-  //   'delsoncate'  =>  ['only'=>'del'],
-  // ];
 
   /** 
    * 权限添加

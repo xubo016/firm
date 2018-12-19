@@ -34,19 +34,34 @@
                 <div class="am-form-group">
                   <label for="user-name" class="am-u-sm-3 am-form-label">用户组名 / Name</label>
                   <div class="am-u-sm-9">
-                    <input type="text" name="title" required oninvalid="setCustomValidity('请输入用户组名');" oninput="setCustomValidity('');" id="user-name" placeholder="用户组名 / Name">
+                    <input type="text" name="title" required oninvalid="setCustomValidity('请输入用户组名');" oninput="setCustomValidity('');"
+                      id="user-name" placeholder="用户组名 / Name">
                   </div>
                 </div>
                 <div class="am-form-group">
                   <label for="user-mima" class="am-u-sm-3 am-form-label">是否启用</label>
                   <div class="am-u-sm-9">
-                      <input type="checkbox" value="1" name="status" data-am-switch checked/>
+                    <input type="checkbox" value="1" name="status" data-am-switch checked />
                   </div>
                 </div>
                 <div class="am-form-group">
-                  <label for="user-intro" class="am-u-sm-3 am-form-label">描述</label>
+                  <label for="user-intro" class="am-u-sm-3 am-form-label">配置权限</label>
                   <div class="am-u-sm-9">
-                    <textarea class="" name="rules" rows="10" id="user-intro" placeholder="请输入描述"></textarea>
+                    <ul class="tpl-task-list">
+                      {foreach $AuthRule as $vo}
+                      <li>
+                        <div style="float: left;">
+                          <?php echo str_repeat('&nbsp;',$vo['level']*5);?>
+                        </div>
+                        <div class="task-checkbox">
+                          <input name="rules[]" value="{$vo.id}" type="checkbox" dataid="id-{$vo.dataid}" class="liChild checkbox-parent <?php if($vo['level']!=0){echo 'checkbox-child';}?>">
+                        </div>
+                        <div class="task-title">
+                          <span class="task-title-sp" {if condition="$vo['level'] eq 0"}style="font-weight:700;"{/if}> {$vo.title} </span>
+                        </div>
+                      </li>
+                      {/foreach}
+                    </ul>
                   </div>
                 </div>
                 <div class="am-form-group">
@@ -64,4 +79,5 @@
   <!-- js -->
   {include file="public/foot" /}
 </body>
+
 </html>

@@ -32,6 +32,16 @@
             <div class="am-u-sm-12 am-u-md-9">
               <form class="am-form am-form-horizontal" method="post" action="">
                 <div class="am-form-group">
+                  <label for="user-mima" class="am-u-sm-3 am-form-label">所属用户组</label>
+                  <div class="am-u-sm-9">
+                    <select name="group_id" data-am-selected="{searchBox: 1}" >
+                      {volist name="authGroup" id="vo"}
+                        <option value="{$vo.id}">{$vo.title}</option>
+                      {/volist}
+                    </select>
+                  </div>
+                </div>
+                <div class="am-form-group">
                   <label for="user-name" class="am-u-sm-3 am-form-label">姓名 / Name</label>
                   <div class="am-u-sm-9">
                     <input type="text" name="user" required oninvalid="setCustomValidity('请输入您的姓名');" oninput="setCustomValidity('');" id="user-name" placeholder="姓名 / Name">

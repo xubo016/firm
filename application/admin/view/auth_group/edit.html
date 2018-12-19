@@ -47,7 +47,21 @@
                 <div class="am-form-group">
                   <label for="user-intro" class="am-u-sm-3 am-form-label">描述</label>
                   <div class="am-u-sm-9">
-                    <textarea class="" name="rules" rows="10" id="user-intro"></textarea>
+                      <ul class="tpl-task-list">
+                        {foreach $AuthRule as $vo}
+                          <li>
+                            <div style="float: left;">
+                              <?php echo str_repeat('&nbsp;',$vo['level']*5);?>
+                            </div>
+                            <div class="task-checkbox">
+                              <input name="rules[]" value="{$vo.id}" <?php $arr=explode(',',$AuthGroup['rules']); if(in_array($vo['id'],$arr)){echo 'checked';} ?> type="checkbox" dataid="id-{$vo.dataid}" class="liChild checkbox-parent <?php if($vo['level']!=0){echo 'checkbox-child';}?>">
+                            </div>
+                            <div class="task-title">
+                              <span class="task-title-sp" {if condition="$vo['level'] eq 0"}style="font-weight:700;"{/if}> {$vo.title} </span>
+                            </div>
+                          </li>
+                        {/foreach}
+                      </ul>
                   </div>
                 </div>
                 <div class="am-form-group">

@@ -36,10 +36,11 @@ class Admin extends Model
     if(empty($data) || !is_array($data)){
       return false;
     }
-    //执行添加
-    $res = $this->save($data);
-    //判断是否添加成功
-    if($res){
+    //执行添加  
+    if($this->allowField(true)->save($data)){
+      $addAccess['uid'] = $this->id;
+      $addAccess['group_id'] = $data['group_id'];
+      db('auth_group_access')->insert($addAccess);
       return true;
     }else{
       return false;

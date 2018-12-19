@@ -3,9 +3,9 @@ namespace app\admin\controller;
 use app\admin\controller\Common;
 use app\admin\model\Admin as AdminModel;
 use app\admin\validate\Admin as AdminValidate;
+use app\admin\controller\Auth;
 class Admin extends Common
 {
-
   /** 
    * 管理员添加
    */
@@ -31,6 +31,8 @@ class Admin extends Common
       }
       return;
     }
+    $authGroup = db('auth_group')->field('id,title')->select();
+    $this->assign('authGroup',$authGroup);
     return $this->fetch();
   }
 
@@ -39,8 +41,15 @@ class Admin extends Common
    */
   public function lst()
   {
+    $auth = new Auth();
+    $groups = $auth->getGroups(session('id'));
+    
     $admin = new AdminModel();
     $res = $admin->getadmin();
+    foreach($res as $k => $v){
+      $groupTitle = $auth->getGroups($v['id']);
+      $v['groupTitle']= $groupTitle[0]['title'];
+    }
     //分配数据到页面
     $this->assign('res',$res);
     return $this->fetch();
@@ -85,8 +94,9 @@ class Admin extends Common
         $this->error($validate->getError());
       }
       $admin = new AdminModel();
-      $res = $admin->save($data,['id'=>input('id')]);
+      $res = $admin->allowField(true)->save($data,['id'=>input('id')]);
       if($res !== false){
+        db('auth_group_access')->where('uid',$data['id'])->update(['group_id'=>$data['group_id']]);
         $this->success('修改成功','lst');
       }else{
         $this->error('修改失败');
@@ -97,7 +107,13 @@ class Admin extends Common
     if(!$code){
       $this->error("该管理员不存在",'lst');
     }
-    $this->assign('admin',$code);
+    $addAccess = db('auth_group_access')->where('uid',$id)->field('group_id')->find();
+    $authGroup = db('auth_group')->field('id,title')->select();
+    $this->assign(array(
+      'admin'=>$code,
+      'authGroup'=>$authGroup,
+      'addAccess'=>$addAccess['group_id']
+    ));
     return view();
   }
 
