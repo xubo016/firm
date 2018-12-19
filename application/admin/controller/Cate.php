@@ -69,9 +69,6 @@ class Cate extends Common
     foreach($article as $k => $v){
       db('article')->where('cateid',$v)->delete();
     }
-    if($son){
-      db('cate')->delete($son);
-    }
   }
 
   /**

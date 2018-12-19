@@ -81,9 +81,9 @@
                     <td>
                       <div class="am-btn-toolbar">
                         <div class="am-btn-group am-btn-group-xs">
-                            <a href=""><button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span>
+                            <a href="{:url('AuthRule/edit',['id'=>$vo.id])}"><button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span>
                             编辑</button></a>
-                            <a href="javascript:void(0);" onclick="del()"><button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span
+                            <a href="{:url('AuthRule/del',['id'=>$vo.id])}"><button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span
                               class="am-icon-trash-o"></span>
                             删除</button></a>
                         </div>
@@ -93,21 +93,6 @@
                 {/foreach}
                 </tbody>
               </table>
-              <script>
-                /**
-                  * ajax单条删除
-                  */
-                function del(obj,id){
-                  $.post("{:url('AuthGroup/del')}",{id:id},function(data){
-                    if(data.statu==200){
-                      layer.alert(data.info, {icon: 6});
-                      $(obj).parent().parent().parent().parent().remove();
-                    }else{
-                      layer.alert(data.info, {icon: 5});
-                    }
-                  })
-                }
-              </script>
               <hr>
             </div>
           </div>
