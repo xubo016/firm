@@ -14,8 +14,10 @@ class AuthGroup extends Common
       if(!isset($data['status'])){
         $data['status'] = 0;
       }
-      if($data['rules']){
+      if(isset($data['rules'])){
         $data['rules']=implode(',',$data['rules']);
+      }else{
+        $data['rules']='';
       }
       $AuthGroupModel = new  AuthGroupModel();
       if($AuthGroupModel->save($data)){
@@ -50,8 +52,10 @@ class AuthGroup extends Common
       if(!isset($data['status'])){
         $data['status'] = 0;
       }
-      if($data['rules']){
+      if(isset($data['rules'])){
         $data['rules']=implode(',',$data['rules']);
+      }else{
+        $data['rules']='';
       }
       $code = db('Auth_group')->where('id',input('id'))->update($data);
       if($code){

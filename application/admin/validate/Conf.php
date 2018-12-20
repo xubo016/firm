@@ -4,7 +4,7 @@ use think\Validate;
 class Conf extends Validate
 {
   /**
-   * 链接验证
+   * 配置验证
    */
   protected $rule = [
     'cnname'     =>  'unique:conf|require|max:25',

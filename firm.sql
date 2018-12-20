@@ -31,11 +31,11 @@ CREATE TABLE `qy_admin` (
   `delete_time` timestamp NULL DEFAULT NULL COMMENT '软删除',
   `ip` varchar(20) DEFAULT NULL COMMENT '管理员ip',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 
 /*Data for the table `qy_admin` */
 
-insert  into `qy_admin`(`id`,`user`,`email`,`password`,`repassword`,`create_time`,`update_time`,`delete_time`,`ip`) values (38,'测试','931274989@qq.com','4297f44b13955235245b2497399d7a93','4297f44b13955235245b2497399d7a93','2018-12-19 20:07:12','2018-12-19 20:07:12',NULL,NULL),(36,'abc','931274989@qq.com','4297f44b13955235245b2497399d7a93','4297f44b13955235245b2497399d7a93','2018-12-19 20:05:39','2018-12-19 20:06:09',NULL,NULL),(37,'123','931274989@qq.com','4297f44b13955235245b2497399d7a93','4297f44b13955235245b2497399d7a93','2018-12-19 20:06:33','2018-12-19 20:06:33',NULL,NULL),(32,'asd','931274989@qq.com','e10adc3949ba59abbe56e057f20f883e','e10adc3949ba59abbe56e057f20f883e','0000-00-00 00:00:00','2018-12-19 19:59:42','2018-12-19 19:59:42',NULL),(34,'qaz','931274989@qq.com','4297f44b13955235245b2497399d7a93','4297f44b13955235245b2497399d7a93','2018-12-19 19:29:16','2018-12-19 20:02:23',NULL,NULL),(33,'qwe','931274989@qq.com','96e79218965eb72c92a549dd5a330112','96e79218965eb72c92a549dd5a330112','2018-12-17 19:57:28','2018-12-19 19:59:40','2018-12-19 19:59:40',NULL),(35,'admin','931274989@qq.com','21232f297a57a5a743894a0e4a801fc3','21232f297a57a5a743894a0e4a801fc3','2018-12-19 20:03:49','2018-12-19 20:03:49',NULL,NULL);
+insert  into `qy_admin`(`id`,`user`,`email`,`password`,`repassword`,`create_time`,`update_time`,`delete_time`,`ip`) values (39,'abc','931274989@qq.com','4297f44b13955235245b2497399d7a93','4297f44b13955235245b2497399d7a93','2018-12-20 00:08:26','2018-12-20 00:08:26',NULL,NULL),(41,'123','931274989@qq.com','4297f44b13955235245b2497399d7a93','4297f44b13955235245b2497399d7a93','2018-12-20 08:32:37','2018-12-20 08:32:37',NULL,NULL),(35,'admin','931274989@qq.com','21232f297a57a5a743894a0e4a801fc3','21232f297a57a5a743894a0e4a801fc3','2018-12-19 20:03:49','2018-12-19 20:03:49',NULL,NULL);
 
 /*Table structure for table `qy_article` */
 
@@ -58,7 +58,7 @@ CREATE TABLE `qy_article` (
 
 /*Data for the table `qy_article` */
 
-insert  into `qy_article`(`id`,`title`,`keyword`,`desc`,`author`,`pic`,`centent`,`click`,`zan`,`create_time`,`cateid`) values (2,'a','c','a','b','\\uploads/20181214\\f0b5e786e3a4cc1c78ed955de0c152fe.png','<p>a</p>',0,0,NULL,13),(4,'标题','登录页','描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试','信息','\\uploads/20181216\\2329b4a07189005fe9578a1a75b87fc9.png','<p>aa</p>',0,0,NULL,1),(5,'测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题','啊啊','啊啊','啊啊','\\uploads/20181214\\2a57c1e422955cb5944e0853e8754bf1.png','<p>啊啊</p>',0,0,NULL,6),(6,'1','1','1','1','\\uploads/20181214\\0a1c6c91fa92b8aceceac1824355e846.png','<p>1</p>',0,0,NULL,6),(9,'测试','1','1','1','\\uploads/20181214\\0dde52574832c97f7ef985707a0aac58.jpg','<p>1</p>',0,0,NULL,13),(12,'再测','ccc','ccc','cc','\\uploads/20181214\\3f980f419e412be4eeab719677d02452.png','<p>ccc</p>',0,0,NULL,6),(14,'2','2','2','2',NULL,'<p>2</p>',0,0,NULL,13),(18,'xa','xa','xa','xa','\\uploads/20181214\\c0dc154f8c55bc1b7f839807ba3b2039.png','<p>xa</p>',0,0,NULL,6),(19,'q','q','q','q','\\uploads/20181214\\a2c875fb9d598781a56684bbf65ed981.png','<p>q</p>',0,0,NULL,12),(26,'测试啊','aa','aaa','啊啊啊','\\uploads/20181217\\b18a0e6e7e87de09faf2bf43e4da5985.png','<p>asd</p>',0,0,'2018-12-17 20:03:09',13);
+insert  into `qy_article`(`id`,`title`,`keyword`,`desc`,`author`,`pic`,`centent`,`click`,`zan`,`create_time`,`cateid`) values (2,'a','c','a','b','\\uploads/20181214\\f0b5e786e3a4cc1c78ed955de0c152fe.png','<p>a</p>',0,0,NULL,13),(4,'标题','登录页','描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试','信息','\\uploads/20181216\\2329b4a07189005fe9578a1a75b87fc9.png','<p>aa</p>',0,0,NULL,1),(5,'测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题','啊啊','啊啊','啊啊','\\uploads/20181214\\2a57c1e422955cb5944e0853e8754bf1.png','<p>啊啊</p>',0,0,NULL,6),(6,'1','1','1','1','\\uploads/20181214\\0a1c6c91fa92b8aceceac1824355e846.png','<p>1</p>',0,0,NULL,6),(9,'测试','1','1','1','\\uploads/20181214\\0dde52574832c97f7ef985707a0aac58.jpg','<p>1</p>',0,0,NULL,13),(12,'再测','ccc','ccc','cc','\\uploads/20181214\\3f980f419e412be4eeab719677d02452.png','<p>ccc</p>',0,0,NULL,6),(14,'2','2','2','2',NULL,'<p>2</p>',0,0,NULL,13),(18,'xa','xa','xa','xa','\\uploads/20181214\\c0dc154f8c55bc1b7f839807ba3b2039.png','<p>xa</p>',0,0,NULL,6),(26,'测试啊','aa','aaa','啊啊啊','\\uploads/20181217\\b18a0e6e7e87de09faf2bf43e4da5985.png','<p>asd</p>',0,0,'2018-12-17 20:03:09',13);
 
 /*Table structure for table `qy_auth_group` */
 
@@ -68,13 +68,13 @@ CREATE TABLE `qy_auth_group` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户组id',
   `title` char(100) NOT NULL DEFAULT '' COMMENT '用户组名称',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '开启状态默认1 开启 0关闭',
-  `rules` char(80) NOT NULL DEFAULT '' COMMENT '权限内容',
+  `rules` varchar(255) NOT NULL DEFAULT '' COMMENT '权限内容',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 /*Data for the table `qy_auth_group` */
 
-insert  into `qy_auth_group`(`id`,`title`,`status`,`rules`) values (1,'超级管理员',1,'1,3,4,20,15,2,16,33,34,35,17,18,19,21,22,23,24,25,26,27,28,29,30,31,32,36,37,38,'),(2,'普通管理员',1,''),(3,'文档管理员',1,''),(11,'文章管理员',1,'17,18,19');
+insert  into `qy_auth_group`(`id`,`title`,`status`,`rules`) values (1,'超级管理员',1,''),(12,'权限管理员',1,'23,24,25,26,27,28,29,30,31,32'),(2,'普通管理员',1,''),(11,'文章管理员',1,'17,18,19,21,22');
 
 /*Table structure for table `qy_auth_group_access` */
 
@@ -90,7 +90,7 @@ CREATE TABLE `qy_auth_group_access` (
 
 /*Data for the table `qy_auth_group_access` */
 
-insert  into `qy_auth_group_access`(`uid`,`group_id`) values (34,11),(35,1),(36,2),(37,3),(38,11);
+insert  into `qy_auth_group_access`(`uid`,`group_id`) values (35,1),(39,11),(40,2),(41,12);
 
 /*Table structure for table `qy_auth_rule` */
 

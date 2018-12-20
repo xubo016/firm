@@ -42,8 +42,6 @@ class Admin extends Common
   public function lst()
   {
     $auth = new Auth();
-    $groups = $auth->getGroups(session('id'));
-    
     $admin = new AdminModel();
     $res = $admin->getadmin();
     foreach($res as $k => $v){
