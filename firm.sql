@@ -31,11 +31,11 @@ CREATE TABLE `qy_admin` (
   `delete_time` timestamp NULL DEFAULT NULL COMMENT '软删除',
   `ip` varchar(20) DEFAULT NULL COMMENT '管理员ip',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `qy_admin` */
 
-insert  into `qy_admin`(`id`,`user`,`email`,`password`,`repassword`,`create_time`,`update_time`,`delete_time`,`ip`) values (39,'abc','931274989@qq.com','4297f44b13955235245b2497399d7a93','4297f44b13955235245b2497399d7a93','2018-12-20 00:08:26','2018-12-20 00:08:26',NULL,NULL),(41,'123','931274989@qq.com','4297f44b13955235245b2497399d7a93','4297f44b13955235245b2497399d7a93','2018-12-20 08:32:37','2018-12-20 08:32:37',NULL,NULL),(35,'admin','931274989@qq.com','21232f297a57a5a743894a0e4a801fc3','21232f297a57a5a743894a0e4a801fc3','2018-12-19 20:03:49','2018-12-19 20:03:49',NULL,NULL);
+insert  into `qy_admin`(`id`,`user`,`email`,`password`,`repassword`,`create_time`,`update_time`,`delete_time`,`ip`) values (1,'admin',NULL,'21232f297a57a5a743894a0e4a801fc3','',NULL,NULL,NULL,NULL),(2,'abc','931274989@qq.com','670b14728ad9902aecba32e22fa4f6bd','670b14728ad9902aecba32e22fa4f6bd','2018-12-20 18:02:15','2018-12-20 18:02:15',NULL,NULL);
 
 /*Table structure for table `qy_article` */
 
@@ -54,11 +54,11 @@ CREATE TABLE `qy_article` (
   `create_time` timestamp NULL DEFAULT NULL COMMENT '发布时间',
   `cateid` mediumint(9) DEFAULT NULL COMMENT '所属栏目',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `qy_article` */
 
-insert  into `qy_article`(`id`,`title`,`keyword`,`desc`,`author`,`pic`,`centent`,`click`,`zan`,`create_time`,`cateid`) values (2,'a','c','a','b','\\uploads/20181214\\f0b5e786e3a4cc1c78ed955de0c152fe.png','<p>a</p>',0,0,NULL,13),(4,'标题','登录页','描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试','信息','\\uploads/20181216\\2329b4a07189005fe9578a1a75b87fc9.png','<p>aa</p>',0,0,NULL,1),(5,'测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题','啊啊','啊啊','啊啊','\\uploads/20181214\\2a57c1e422955cb5944e0853e8754bf1.png','<p>啊啊</p>',0,0,NULL,6),(6,'1','1','1','1','\\uploads/20181214\\0a1c6c91fa92b8aceceac1824355e846.png','<p>1</p>',0,0,NULL,6),(9,'测试','1','1','1','\\uploads/20181214\\0dde52574832c97f7ef985707a0aac58.jpg','<p>1</p>',0,0,NULL,13),(12,'再测','ccc','ccc','cc','\\uploads/20181214\\3f980f419e412be4eeab719677d02452.png','<p>ccc</p>',0,0,NULL,6),(14,'2','2','2','2',NULL,'<p>2</p>',0,0,NULL,13),(18,'xa','xa','xa','xa','\\uploads/20181214\\c0dc154f8c55bc1b7f839807ba3b2039.png','<p>xa</p>',0,0,NULL,6),(26,'测试啊','aa','aaa','啊啊啊','\\uploads/20181217\\b18a0e6e7e87de09faf2bf43e4da5985.png','<p>asd</p>',0,0,'2018-12-17 20:03:09',13);
+insert  into `qy_article`(`id`,`title`,`keyword`,`desc`,`author`,`pic`,`centent`,`click`,`zan`,`create_time`,`cateid`) values (1,'测试','关键字','描述','author','\\uploads/20181220\\da4daaa26b0b862bfae3b53331e7da61.png','<p>内容测试</p>',0,0,'2018-12-20 17:52:36',1),(2,'测试2','关键字','ok','author','\\uploads/20181220\\d831b1d53e0b662c656ba1649a18f3f2.png','<p>neiron</p>',0,0,'2018-12-20 17:53:27',2);
 
 /*Table structure for table `qy_auth_group` */
 
@@ -70,11 +70,11 @@ CREATE TABLE `qy_auth_group` (
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '开启状态默认1 开启 0关闭',
   `rules` varchar(255) NOT NULL DEFAULT '' COMMENT '权限内容',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `qy_auth_group` */
 
-insert  into `qy_auth_group`(`id`,`title`,`status`,`rules`) values (1,'超级管理员',1,''),(12,'权限管理员',1,'23,24,25,26,27,28,29,30,31,32'),(2,'普通管理员',1,''),(11,'文章管理员',1,'17,18,19,21,22');
+insert  into `qy_auth_group`(`id`,`title`,`status`,`rules`) values (1,'超级管理员',1,''),(2,'管理员',1,'2,16,33,34,35,17,18,19,21,22,42,43,44,45,46');
 
 /*Table structure for table `qy_auth_group_access` */
 
@@ -90,7 +90,7 @@ CREATE TABLE `qy_auth_group_access` (
 
 /*Data for the table `qy_auth_group_access` */
 
-insert  into `qy_auth_group_access`(`uid`,`group_id`) values (35,1),(39,11),(40,2),(41,12);
+insert  into `qy_auth_group_access`(`uid`,`group_id`) values (1,1),(2,2);
 
 /*Table structure for table `qy_auth_rule` */
 
@@ -123,11 +123,11 @@ CREATE TABLE `qy_cate` (
   `type` varchar(10) NOT NULL DEFAULT '1' COMMENT '栏目类型1代表文章列表2代表单页3代表图片列表',
   `pid` int(11) NOT NULL DEFAULT '0' COMMENT '上级栏目id 0代表最上级',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `qy_cate` */
 
-insert  into `qy_cate`(`id`,`catename`,`type`,`pid`) values (1,'中国','1',0),(12,'内蒙古','1',1),(6,'上海','2',1),(13,'赤峰','2',12),(17,'欧洲','3',0),(23,'2','1',22),(24,'3','1',23),(25,'4','1',23),(29,'8','1',22),(27,'6','1',26),(31,'bbb','1',20);
+insert  into `qy_cate`(`id`,`catename`,`type`,`pid`) values (1,'中国','1',0),(2,'内蒙古','1',1),(3,'赤峰','2',2);
 
 /*Table structure for table `qy_conf` */
 
@@ -141,11 +141,11 @@ CREATE TABLE `qy_conf` (
   `value` varchar(255) DEFAULT NULL COMMENT '配置值',
   `values` varchar(255) DEFAULT NULL COMMENT '配置可选值',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `qy_conf` */
 
-insert  into `qy_conf`(`id`,`cnname`,`enname`,`type`,`value`,`values`) values (1,'站点配置','conf',1,'1','111'),(2,'测试2','ceshi1',2,'1',''),(3,'是否关闭网站','guanbui',3,'是','是,否'),(5,'session时间','aaa',5,'两个小时','一个小时,两个小时,三个小时'),(12,'验证码是否启用','qqq',4,'','选我');
+insert  into `qy_conf`(`id`,`cnname`,`enname`,`type`,`value`,`values`) values (1,'网站名称','name',1,NULL,'');
 
 /*Table structure for table `qy_link` */
 
@@ -157,11 +157,11 @@ CREATE TABLE `qy_link` (
   `desc` varchar(255) DEFAULT NULL COMMENT '链接描述',
   `url` varchar(160) DEFAULT NULL COMMENT '链接地址',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `qy_link` */
 
-insert  into `qy_link`(`id`,`title`,`desc`,`url`) values (16,'3','','http://www.baidus.com'),(13,'百度','baidu','http://www.baidu.com'),(14,'2','','http://www.baiqdu.com'),(15,'11111111111111111111111111111111111','','http://www.baiduc.com'),(17,'4','s','http://www.baisdus.com');
+insert  into `qy_link`(`id`,`title`,`desc`,`url`) values (1,'百度','baidu','http://www.baidu.com');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

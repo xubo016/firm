@@ -49,7 +49,11 @@ class Cate extends Common
    * 栏目删除
    */
   public function del(){
-    $del = db('cate')->delete(input('id'));
+    $cate = new CateModel();
+    $son = $cate->getchilrenid(input('id'));
+    $article = $son;
+    $article[] = input('id');
+    $del = $cate->destroy($article);
     if($del){
       $this->success('删除成功');
     }else{
@@ -62,7 +66,7 @@ class Cate extends Common
    */
   public function delsoncate(){
     $cateid = input('id'); //要删除的当前栏目id
-    $cate = new CateModel;
+    $cate = new CateModel();
     $son = $cate->getchilrenid($cateid);
     $article = $son;
     $article[] = $cateid;
